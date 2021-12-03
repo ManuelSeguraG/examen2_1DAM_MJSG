@@ -1,3 +1,6 @@
+import jdk.nashorn.internal.objects.NativeMath.pow
+import kotlin.math.sqrt
+
 // CLASE DELO EXAMEN
 class Punto(var id: String) {
     var x: Int = 0
@@ -26,8 +29,13 @@ class Punto(var id: String) {
             return puntoAmenosB
         }
 
-        // TODO
-        fun distancia(pA: Punto, pB: Punto): Double = TODO()
+        // Realiza la distancia de las coordenadas X e Y de los puntos puntoA y puntoB, que son los que recibe.
+        // El calculo es la Raiz Cuadrada de las potencias de X e Y
+        // Devuelve un Double.
+        fun distancia(pA: Punto, pB: Punto): Double {
+            val raizPuntoAyPuntoB: Double = sqrt(pow("", pA.x, pB.x) + pow("", pA.y, pB.y))
+            return raizPuntoAyPuntoB
+        }
 
         // Toma un array de coordenadas y separa estas coordenadas en dos listas
             // listaPuntosNorte: Los puntos están en 0 o son superiores que 0 (en la coordenada Y)
@@ -63,6 +71,7 @@ fun main() {
     val puntoB = Punto("pB", 1, 3)
 
     println(Punto.componenteDeVector(puntoA, puntoB))
+    println(Punto.distancia(puntoA, puntoB))
 
     println("")
     println("----------------------------------------------------------------")
