@@ -1,29 +1,42 @@
 import kotlin.math.sqrt
 import kotlin.math.pow
 
+// CLASE DELO EXAMEN
 class Punto(var id: String) {
     var x: Int = 0
     var y: Int = 0
 
+    // Constructor secundario de la clase, donde se dan los valores X e Y
     constructor(id: String, _x: Int, _y: Int) : this(id) {
         x = _x
         y = _y
     }
 
+    // Funcion que da las coordenadas de un punto
     fun obtenerCoordenadas(): Pair<Int, Int> = Pair(x, y)
 
+    // Sobreescritura de la funcion toString, para que devuelva el id y las coordenadas del punto
     override fun toString(): String {
         return "punto $id -> [$x,$y]"
     }
 
+    // Funciones de la clase (metodos estaticos)
     companion object {
+
+        // Toma dos puntos, puntoA y puntoB, y resta puntoA a PuntoB
         fun componenteDeVector(pA: Punto, pB: Punto): Punto {
             var puntoAmenosB = Punto ("${pA.id}${pB.id}", pB.x.minus(pA.x), pB.y.minus(pA.y))
             return puntoAmenosB
         }
 
+        // TODO
         fun distancia(pA: Punto, pB: Punto): Double = TODO()
 
+        // Toma un array de coordenadas y separa estas coordenadas en dos listas
+            // listaPuntosNorte: Los puntos están en 0 o son superiores que 0 (en la coordenada Y)
+            // listaPuntosSur: Los puntos están por debajo de 0 (en la coordenada Y)
+        // Despues estas listas son unidas en un map, que tiene como clave "Norte" y "Sur"
+        // Cada una de las listas es añadida en su respectiva clave
         fun localizacionGeograficaNS(arrayPuntos: Array<Punto> ): Map< String, List<Punto> >{
             var mapaLocalizaciones = mutableMapOf< String, List<Punto> >()
             var listaPuntosNorte = mutableListOf<Punto>()
