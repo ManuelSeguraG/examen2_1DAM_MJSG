@@ -13,7 +13,7 @@ class Punto(var id: String) {
     fun obtenerCoordenadas(): Pair<Int, Int> = Pair(x, y)
 
     override fun toString(): String {
-        return "punto <$id> -> [<$x>,<$y>]"
+        return "punto $id -> [$x,$y]"
     }
 
     companion object {
@@ -23,12 +23,51 @@ class Punto(var id: String) {
         }
 
         fun distancia(pA: Punto, pB: Punto): Double = TODO()
+
+        fun localizacionGeograficaNS(arrayPuntos: Array<Punto> ): Map< String, List<Punto> >{
+            var mapaLocalizaciones = mutableMapOf< String, List<Punto> >()
+            var listaPuntosNorte = mutableListOf<Punto>()
+            var listaPuntosSur = mutableListOf<Punto>()
+
+            for (i in 0..arrayPuntos.size - 1){
+
+                if (arrayPuntos[i].y >= 0) {
+                    listaPuntosNorte.add(arrayPuntos[i])
+                } else {
+                    listaPuntosSur.add(arrayPuntos[i])
+                }
+
+            }
+
+            mapaLocalizaciones.put("Norte", listaPuntosNorte)
+            mapaLocalizaciones.put("Sur", listaPuntosSur)
+
+            return mapaLocalizaciones
+
+        }
     }
 }
 
 fun main() {
     var puntoA = Punto("pA", 3, 2)
-    var puntoB = Punto("pb", 2, 1)
+    var puntoB = Punto("pb", 1, 3)
 
     println(Punto.componenteDeVector(puntoA, puntoB))
+
+    println("")
+    println("----------------------------------------------------------------")
+    println("")
+
+    var punto1 = Punto("p1", -1, 0)
+    var punto2 = Punto("p2", 3, -1)
+    var punto3 = Punto("p3", -4, 4)
+    var punto4 = Punto("p4", -3, 2)
+    var punto5 = Punto("p5", 6, -4)
+    var punto6 = Punto("p6", -5, 6)
+    var punto7 = Punto("p7", 10, -8)
+    var punto8 = Punto("p8", 1, 5)
+    var punto9 = Punto("p9", 6, -7)
+    var arrayLocalizaciones: Array<Punto> = arrayOf(punto1, punto2, punto3, punto4, punto5, punto6, punto7, punto8, punto9)
+
+    println(Punto.localizacionGeograficaNS(arrayLocalizaciones))
 }
