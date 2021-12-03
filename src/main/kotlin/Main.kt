@@ -1,6 +1,3 @@
-import kotlin.math.sqrt
-import kotlin.math.pow
-
 // CLASE DELO EXAMEN
 class Punto(var id: String) {
     var x: Int = 0
@@ -25,7 +22,7 @@ class Punto(var id: String) {
 
         // Toma dos puntos, puntoA y puntoB, y resta puntoA a PuntoB
         fun componenteDeVector(pA: Punto, pB: Punto): Punto {
-            var puntoAmenosB = Punto ("${pA.id}${pB.id}", pB.x.minus(pA.x), pB.y.minus(pA.y))
+            val puntoAmenosB = Punto ("${pA.id}${pB.id}", pB.x.minus(pA.x), pB.y.minus(pA.y))
             return puntoAmenosB
         }
 
@@ -38,9 +35,9 @@ class Punto(var id: String) {
         // Despues estas listas son unidas en un map, que tiene como clave "Norte" y "Sur"
         // Cada una de las listas es añadida en su respectiva clave
         fun localizacionGeograficaNS(arrayPuntos: Array<Punto> ): Map< String, List<Punto> >{
-            var mapaLocalizaciones = mutableMapOf< String, List<Punto> >()
-            var listaPuntosNorte = mutableListOf<Punto>()
-            var listaPuntosSur = mutableListOf<Punto>()
+            val mapaLocalizaciones = mutableMapOf< String, List<Punto> >()
+            val listaPuntosNorte = mutableListOf<Punto>()
+            val listaPuntosSur = mutableListOf<Punto>()
 
             for (i in 0..arrayPuntos.size - 1){
 
@@ -62,8 +59,8 @@ class Punto(var id: String) {
 }
 
 fun main() {
-    var puntoA = Punto("pA", 3, 2)
-    var puntoB = Punto("pb", 1, 3)
+    val puntoA = Punto("pA", 3, 2)
+    val puntoB = Punto("pB", 1, 3)
 
     println(Punto.componenteDeVector(puntoA, puntoB))
 
@@ -71,16 +68,16 @@ fun main() {
     println("----------------------------------------------------------------")
     println("")
 
-    var punto1 = Punto("p1", -1, 0)
-    var punto2 = Punto("p2", 3, -1)
-    var punto3 = Punto("p3", -4, 4)
-    var punto4 = Punto("p4", -3, 2)
-    var punto5 = Punto("p5", 6, -4)
-    var punto6 = Punto("p6", -5, 6)
-    var punto7 = Punto("p7", 10, -8)
-    var punto8 = Punto("p8", 1, 5)
-    var punto9 = Punto("p9", 6, -7)
-    var arrayLocalizaciones: Array<Punto> = arrayOf(punto1, punto2, punto3, punto4, punto5, punto6, punto7, punto8, punto9)
+    val punto1 = Punto("p1", -1, 0)
+    val punto2 = Punto("p2", 3, -1)
+    val punto3 = Punto("p3", -4, 4)
+    val punto4 = Punto("p4", -3, 2)
+    val punto5 = Punto("p5", 6, -4)
+    val punto6 = Punto("p6", -5, 6)
+    val punto7 = Punto("p7", 10, -8)
+    val punto8 = Punto("p8", 1, 5)
+    val punto9 = Punto("p9", 6, -7)
+    val arrayLocalizaciones: Array<Punto> = arrayOf(punto1, punto2, punto3, punto4, punto5, punto6, punto7, punto8, punto9)
 
     println(Punto.localizacionGeograficaNS(arrayLocalizaciones))
 }
